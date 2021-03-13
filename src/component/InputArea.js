@@ -20,7 +20,7 @@ function InputArea(props) {
           props.change("");
         }}
       >
-        Add
+        {props.textEdit}
       </button>
     </div>
   );

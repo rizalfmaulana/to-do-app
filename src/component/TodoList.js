@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 const TodoList = (props) => {
   const [items, setItems] = useState([]);
+  const [textEdit, setTextEdit] = useState("Add");
 
   function addItem(inputText) {
     if (props.edit) {
@@ -18,6 +19,7 @@ const TodoList = (props) => {
       );
       props.editingID(null);
       props.editing(false);
+      setTextEdit("Add");
       console.log(props.editID);
       console.log(props.edit);
     } else {
@@ -40,6 +42,7 @@ const TodoList = (props) => {
     props.change(spesificItem);
     props.editing(true);
     props.editingID(id);
+    setTextEdit("Edit");
   }
 
   return (
@@ -47,7 +50,7 @@ const TodoList = (props) => {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <InputArea addItem={addItem} />
+      <InputArea addItem={addItem} textEdit={textEdit} />
       <div>
         <ul>
           {items.map((item, index) => {
